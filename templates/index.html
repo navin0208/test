@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> <!-- If you have CSS -->
+    <title>Your Flask App</title>
+</head>
+<body>
+    <h1>Welcome to Your Flask App</h1>
+    <p>This is a simple Flask application rendering an HTML file.</p>
+
+    <!-- Section to display received data -->
+    <h2>Data from Raspberry Pi</h2>
+    {% if data %}
+        <table>
+            <thead>
+                <tr>
+                    <th>PI ID</th>
+                    <th>Product Count</th>
+                    <th>Not OK Count</th>
+                    <th>Shift</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ data.pi_id }}</td>
+                    <td>{{ data.product_count }}</td>
+                    <td>{{ data.not_ok_count }}</td>
+                    <td>{{ data.shift }}</td>
+                </tr>
+            </tbody>
+        </table>
+    {% else %}
+        <p>No data received yet.</p>
+    {% endif %}
+</body>
+</html>
